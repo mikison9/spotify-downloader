@@ -4,7 +4,7 @@ long_desc = open('README.md', encoding = 'utf-8').read()
 
 setup(
     # 'spotify-downloader' was already taken (＞﹏＜)
-    name = "spotdl",
+    name = "spot-yt-translate",
     
     packages = [
         'spotdl',

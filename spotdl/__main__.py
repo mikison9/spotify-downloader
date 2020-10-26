@@ -89,15 +89,12 @@ def console_entry_point():
         #! We use 'return None' as a convenient exit/break from the function
         return None
 
-    if '--index' in cliArgs:
-        index_flag = True
-
     initialize(
         clientId='4fe3fecfe5334023a1472516cc99d805',
         clientSecret='0f02b7c483c04257984695007a4a8d5c'
         )
 
-    downloader = DownloadManager(index_flag)
+    downloader = DownloadManager()
 
     for request in cliArgs[1:]:
         if 'open.spotify.com' in request and 'track' in request:
@@ -106,35 +103,16 @@ def console_entry_point():
 
             if song.get_youtube_link() != None:
                 downloader.download_single_song(song)
-            else:
-                print('Skipping %s (%s) as no match could be found on youtube' % (
-                    song.get_song_name(), request
-                ))
 
         elif 'open.spotify.com' in request and 'album' in request:
-            print('Fetching Album...')
             songObjList = get_album_tracks(request)
 
             downloader.download_multiple_songs(songObjList)
 
         elif 'open.spotify.com' in request and 'playlist' in request:
-            print('Fetching Playlist...')
             songObjList = get_playlist_tracks(request)
 
             downloader.download_multiple_songs(songObjList)
-
-        elif request.endswith('.spotdlTrackingFile'):
-            print('Preparing to resume download...')
-            downloader.resume_download_from_tracking_file(request)
-
-        else:
-            print('Searching for song "%s"...' % request)
-            try:
-                song = search_for_song(request)
-                downloader.download_single_song(song)
-
-            except Exception:
-                print('No song named "%s" could be found on spotify' % request)
 
     downloader.close()
 
