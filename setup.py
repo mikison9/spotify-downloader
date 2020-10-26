@@ -4,13 +4,13 @@ long_desc = open('README.md', encoding = 'utf-8').read()
 
 setup(
     # 'spotify-downloader' was already taken (＞﹏＜)
-    name = "spot-yt-translate",
+    name = "spyttr",
     
     packages = [
-        'spot-yt-translate',
-        'spot-yt-translate.search',
-        'spot-yt-translate.download',
-        'spot-yt-translate.patches'
+        'spyttr',
+        'spyttr.search',
+        'spyttr.download',
+        'spyttr.patches'
     ],
 
     #! PyPi doesn't allow repeat names, so it essentially considered a patch
@@ -65,6 +65,6 @@ setup(
     ],
 
     entry_points = {
-        "console_scripts": ["spot-yt-translate = spot-yt-translate.__main__:console_entry_point"]
+        "console_scripts": ["spyttr = spyttr.__main__:console_entry_point"]
     }
 )

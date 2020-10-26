@@ -31,7 +31,7 @@ from multiprocessing import freeze_support
 #! synch was an absolute pain, each process knows how much 'it' progressed, but the display has to be for the
 #! overall progress so, yeah... that took time.
 #!
-#! spot-yt-translate will show you its true speed on longer download's - so make sure you try downloading a playlist.
+#! spyttr will show you its true speed on longer download's - so make sure you try downloading a playlist.
 #!
 #! still yet to try and package this but, in theory, there should be no errors.
 #!
@@ -42,31 +42,31 @@ from multiprocessing import freeze_support
 #! Script Help
 help_notice = '''
 To download a song run,
-    spot-yt-translate $trackUrl
-    eg. spot-yt-translate https://open.spotify.com/track/08mG3Y1vljYA6bvDt4Wqkj?si=SxezdxmlTx-CaVoucHmrUA
+    spyttr $trackUrl
+    eg. spyttr https://open.spotify.com/track/08mG3Y1vljYA6bvDt4Wqkj?si=SxezdxmlTx-CaVoucHmrUA
 
 To download a album run,
-    spot-yt-translate $albumUrl
-    eg. spot-yt-translate https://open.spotify.com/album/2YMWspDGtbDgYULXvVQFM6?si=gF5dOQm8QUSo-NdZVsFjAQ
+    spyttr $albumUrl
+    eg. spyttr https://open.spotify.com/album/2YMWspDGtbDgYULXvVQFM6?si=gF5dOQm8QUSo-NdZVsFjAQ
 
 To download a playlist run,
-    spot-yt-translate $playlistUrl
-    eg. spot-yt-translate https://open.spotify.com/playlist/37i9dQZF1DWXhcuQw7KIeM?si=xubKHEBESM27RqGkqoXzgQ
+    spyttr $playlistUrl
+    eg. spyttr https://open.spotify.com/playlist/37i9dQZF1DWXhcuQw7KIeM?si=xubKHEBESM27RqGkqoXzgQ
 
 To search for and download a song (not very accurate) run,
-    spot-yt-translate $songQuery
-    eg. spot-yt-translate 'The HU - Sugaan Essenna'
+    spyttr $songQuery
+    eg. spyttr 'The HU - Sugaan Essenna'
 
 To resume a failed/incomplete download run,
-    spot-yt-translate $pathToTrackingFile
-    eg. spot-yt-translate 'Sugaan Essenna.spotdlTrackingFile'
+    spyttr $pathToTrackingFile
+    eg. spyttr 'Sugaan Essenna.spotdlTrackingFile'
 
     Note, '.spotDlTrackingFiles' are automatically created during download start, they are deleted on
     download completion
 
 You can chain up download tasks by seperating them with spaces:
-    spot-yt-translate $songQuery1 $albumUrl $songQuery2 ... (order does not matter)
-    eg. spot-yt-translate 'The Hu - Sugaan Essenna' https://open.spotify.com/playlist/37i9dQZF1DWXhcuQw7KIeM?si=xubKHEBESM27RqGkqoXzgQ ...
+    spyttr $songQuery1 $albumUrl $songQuery2 ... (order does not matter)
+    eg. spyttr 'The Hu - Sugaan Essenna' https://open.spotify.com/playlist/37i9dQZF1DWXhcuQw7KIeM?si=xubKHEBESM27RqGkqoXzgQ ...
 
 Spotdl downloads up to 4 songs in parallel - try to download albums and playlists instead of
 tracks for more speed
