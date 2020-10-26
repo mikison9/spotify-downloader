@@ -12,10 +12,10 @@ from urllib.request import urlopen
 from mutagen.easyid3 import EasyID3, ID3
 from mutagen.id3 import APIC as AlbumCover
 
-from spotdl.download.progressHandlers import DisplayManager, DownloadTracker
-from spotdl.download.progressHandlers import ProgressRootProcess
-from spotdl.patches.pyTube import YouTube
-from spotdl.search.songObj import SongObj
+from spyttr.download.progressHandlers import DisplayManager, DownloadTracker
+from spyttr.download.progressHandlers import ProgressRootProcess
+from spyttr.patches.pyTube import YouTube
+from spyttr.search.songObj import SongObj
 
 
 # ==========================

@@ -1,5 +1,5 @@
-from spotdl.search.spotifyClient import get_spotify_client
-from spotdl.search.songObj import SongObj
+from spyttr.search.spotifyClient import get_spotify_client
+from spyttr.search.songObj import SongObj
 
 from typing import List
 

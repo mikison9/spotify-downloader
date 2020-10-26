@@ -1,5 +1,5 @@
-from spotdl.search.provider import search_and_get_best_match
-from spotdl.search.spotifyClient import get_spotify_client
+from spyttr.search.provider import search_and_get_best_match
+from spyttr.search.spotifyClient import get_spotify_client
 
 from os.path import join
 

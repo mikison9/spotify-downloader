@@ -1,13 +1,13 @@
 #! Basic necessities to get the CLI running
-from spotdl.search.spotifyClient import initialize
+from spyttr.search.spotifyClient import initialize
 from sys import argv as cliArgs
 
 #! Song Search from different start points
-from spotdl.search.utils import get_playlist_tracks, get_album_tracks, search_for_song
-from spotdl.search.songObj import SongObj
+from spyttr.search.utils import get_playlist_tracks, get_album_tracks, search_for_song
+from spyttr.search.songObj import SongObj
 
 #! The actual download stuff
-from spotdl.download.downloader import DownloadManager
+from spyttr.download.downloader import DownloadManager
 
 #! to avoid packaging errors
 from multiprocessing import freeze_support

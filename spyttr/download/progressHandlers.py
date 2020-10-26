@@ -10,7 +10,7 @@ from tqdm import tqdm
 import multiprocessing.managers
 
 #! These are not used, they're here for static type checking using mypy
-from spotdl.search.songObj import SongObj
+from spyttr.search.songObj import SongObj
 from typing import List
 
 from os import remove
