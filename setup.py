@@ -7,10 +7,10 @@ setup(
     name = "spot-yt-translate",
     
     packages = [
-        'spotdl',
-        'spotdl.search',
-        'spotdl.download',
-        'spotdl.patches'
+        'spot-yt-translate',
+        'spot-yt-translate.search',
+        'spot-yt-translate.download',
+        'spot-yt-translate.patches'
     ],
 
     #! PyPi doesn't allow repeat names, so it essentially considered a patch
@@ -65,6 +65,6 @@ setup(
     ],
 
     entry_points = {
-        "console_scripts": ["spotdl = spotdl.__main__:console_entry_point"]
+        "console_scripts": ["spot-yt-translate = spot-yt-translate.__main__:console_entry_point"]
     }
 )
