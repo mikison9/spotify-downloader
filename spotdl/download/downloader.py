@@ -32,7 +32,7 @@ from spotdl.download.progressHandlers import DisplayManager, DownloadTracker
 #! to the quirks of multiprocessing.Pool, that can't be done. Do not consider this as a
 #! standalone function but rather as part of DownloadManager
 
-def download_song(songObj: SongObj, displayManager: DisplayManager = None,
+def download_song(songObj: SongObj, index: int, shouldIndex: bool, displayManager: DisplayManager = None,
                                     downloadTracker: DownloadTracker = None) -> None:
     '''
     `songObj` `songObj` : song to be downloaded
@@ -79,6 +79,9 @@ def download_song(songObj: SongObj, displayManager: DisplayManager = None,
     #! double quotes (") and semi-colons (:) are also disallowed characters but we would
     #! like to retain their equivalents, so they aren't removed in the prior loop
     convertedFileName = convertedFileName.replace('"', "'").replace(': ', ' - ')
+
+    if shouldIndex:
+        convertedFileName = str(index) + '. ' + convertedFileName
 
     convertedFilePath = join('.', convertedFileName) + '.mp3'
 
@@ -240,7 +243,7 @@ class DownloadManager():
     #! Big pool sizes on slow connections will lead to more incomplete downloads
     poolSize = 4
 
-    def __init__(self):
+    def __init__(self, index_flag: bool):
         # start a server for objects shared across processes
         progressRoot = ProgressRootProcess()
         progressRoot.start()
@@ -250,6 +253,8 @@ class DownloadManager():
         # initialize shared objects
         self.displayManager  = progressRoot.DisplayManager()
         self.downloadTracker = progressRoot.DownloadTracker()
+
+        self.indexFlag = index_flag
 
         self.displayManager.clear()
 
@@ -271,7 +276,7 @@ class DownloadManager():
         self.displayManager.reset()
         self.displayManager.set_song_count_to(1)
 
-        download_song(songObj, self.displayManager, self.downloadTracker)
+        download_song(songObj, 0, False, self.displayManager, self.downloadTracker)
 
         print()
     
@@ -293,8 +298,8 @@ class DownloadManager():
         self.workerPool.starmap(
             func     = download_song,
             iterable = (
-                (song, self.displayManager, self.downloadTracker)
-                    for song in songObjList
+                (song, i, self.indexFlag, self.displayManager, self.downloadTracker)
+                    for i, song in enumerate(songObjList)
             )
         )
         print()
@@ -319,7 +324,7 @@ class DownloadManager():
         self.workerPool.starmap(
             func     = download_song,
             iterable = (
-                (song, self.displayManager, self.downloadTracker)
+                (song, 0, False,  self.displayManager, self.downloadTracker)
                     for song in songObjList
             )
         )
